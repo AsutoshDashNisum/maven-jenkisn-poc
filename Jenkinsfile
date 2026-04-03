@@ -37,7 +37,7 @@ pipeline {
                 echo 'Scanning image for vulnerabilities...'
                 // Using Docker-in-Docker to run Trivy without local install
                 sh "docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-                    aquasec/trivy:latest image --severity HIGH,CRITICAL ${IMAGE_NAME}:${IMAGE_TAG}"
+                    aquasec/trivy:0.50.1 image --severity HIGH,CRITICAL ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
 
