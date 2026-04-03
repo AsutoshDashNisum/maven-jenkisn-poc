@@ -27,9 +27,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 echo 'Building Image with Docker Plugin...'
-                script {
-                    dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
-                }
+                // Using standard shell instead of docker plugin groovy methods to prevent missing property errors
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
