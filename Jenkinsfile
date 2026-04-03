@@ -19,8 +19,8 @@ pipeline {
         stage('Build & Test (Maven)') {
             steps {
                 echo 'Building and testing with Maven using Docker...'
-                // Using Maven docker image since Jenkins agent doesn't have Maven or Java 21 installed by default.
-                sh "docker run --rm -v ${PWD}:/usr/src/app -v m2_cache:/root/.m2 -w /usr/src/app maven:3-eclipse-temurin-21 mvn clean package"
+                // Maven is installed natively on the Jenkins agent now!
+                sh "mvn clean package"
             }
         }
 
